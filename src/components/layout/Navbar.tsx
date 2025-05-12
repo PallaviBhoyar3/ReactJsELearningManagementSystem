@@ -103,7 +103,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 <motion.h1 
-                  className="text-2xl font-bold text-blue-600"
+                  className="text-2xl font-bold text-orange-400"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
@@ -127,7 +127,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              {/* <motion.button
+              <motion.button
                 onClick={toggleTheme}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -139,7 +139,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                 ) : (
                   <Moon className="h-6 w-6" />
                 )}
-              </motion.button> */}
+              </motion.button> 
 
               <motion.button 
                 onClick={toggleWishlistModal}
@@ -169,7 +169,6 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                 )}
               </motion.button>
 
-{/* // for redux testing==================> */}
               <motion.button
                 onClick={toggleTheme}
                 whileHover={{ scale: 1.1 }}
@@ -223,7 +222,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                     onClick={openLoginModal}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center px-3 py-1.5 border border-blue-600 text-sm font-medium rounded-md text-blue-600 hover:bg-blue-50 transition-colors"
+                    className="inline-flex items-center px-3 py-1.5 border border-orange-400 text-sm font-medium rounded-md text-orange-400 hover:bg-orange-50 transition-colors"
                   >
                     <LogIn className="h-4 w-4 mr-1" />
                     Login
@@ -232,7 +231,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                     onClick={openSignupModal}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                    className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-orange-400 hover:bg-orange-700 transition-colors"
                   >
                     Sign Up
                   </motion.button>
