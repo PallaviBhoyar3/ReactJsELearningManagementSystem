@@ -1,0 +1,72 @@
+import { courses } from '../../data/courses';
+import { Clock, Tag } from 'lucide-react';
+import { useCart } from '../../contexts/CartContext';
+import CourseCard from '../ui/CourseCard';
+
+const SpecialOffers = () => {
+  const specialOffers = courses.filter(course => course.isSpecialOffer);
+  const { addToCart } = useCart();
+  
+  // Calculate days until offer ends (simulated)
+  const daysRemaining = 3;
+  const hoursRemaining = 21;
+  const minutesRemaining = 45;
+
+  return (
+    <section id="special-offers" className="py-16 bg-gradient-to-r from-orange-50 to-blue-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <div className="inline-block bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+            Limited Time Offer
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Special Discounts Just For You
+          </h2>
+          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+            Grab these high-rated courses at unbelievable prices before they're gone.
+          </p>
+        </div>
+        
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-12">
+          <div className="p-6 text-center">
+            <div className="flex items-center justify-center mb-4">
+              <Clock className="h-6 w-6 text-orange-500 mr-2" />
+              <span className="text-lg font-semibold text-gray-900">
+                Offer ends in:
+              </span>
+            </div>
+            <div className="flex justify-center space-x-4 text-center">
+              <div className="flex flex-col">
+                <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
+                  {daysRemaining}
+                </div>
+                <span className="text-sm text-gray-600 mt-1">Days</span>
+              </div>
+              <div className="flex flex-col">
+                <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
+                  {hoursRemaining}
+                </div>
+                <span className="text-sm text-gray-600 mt-1">Hours</span>
+              </div>
+              <div className="flex flex-col">
+                <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
+                  {minutesRemaining}
+                </div>
+                <span className="text-sm text-gray-600 mt-1">Minutes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {specialOffers.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+        
+      </div>
+    </section>
+  );
+};
+
+export default SpecialOffers;
