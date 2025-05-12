@@ -1,3 +1,4 @@
+import React, {useState, useEffect} from 'react';
 import { courses } from '../../data/courses';
 import { Clock, Tag } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
@@ -11,6 +12,29 @@ const SpecialOffers = () => {
   const daysRemaining = 3;
   const hoursRemaining = 21;
   const minutesRemaining = 45;
+
+
+  // ================================================================
+
+  const initialTime = 3 * 3600 + 2 * 60 + 10; // 1 hour, 2 minutes, 10 seconds
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+
+  useEffect(() => {
+    if(timeLeft <= 0) return;
+    const interval = setInterval(() => {
+      setTimeLeft(prevTime => prevTime - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timeLeft]);
+
+
+const hours = Math.floor(timeLeft / 3600);
+const minutes = Math.floor((timeLeft % 3600) / 60); 
+const seconds = timeLeft % 60;
+const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+// console.log("formattedTime", formattedTime);
+
 
   return (
     <section id="special-offers" className="py-16 bg-gradient-to-r from-orange-50 to-blue-50">
@@ -36,23 +60,32 @@ const SpecialOffers = () => {
               </span>
             </div>
             <div className="flex justify-center space-x-4 text-center">
-              <div className="flex flex-col">
+              {/* <div className="flex flex-col">
                 <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
                   {daysRemaining}
                 </div>
                 <span className="text-sm text-gray-600 mt-1">Days</span>
-              </div>
+              </div> */}
               <div className="flex flex-col">
                 <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
-                  {hoursRemaining}
+                  {/* {hoursRemaining} */}
+                  {String(hours).padStart(2, '0')}
                 </div>
                 <span className="text-sm text-gray-600 mt-1">Hours</span>
               </div>
               <div className="flex flex-col">
                 <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
-                  {minutesRemaining}
+                  {/* {minutesRemaining} */}
+                  {String(minutes).padStart(2, '0')}
                 </div>
                 <span className="text-sm text-gray-600 mt-1">Minutes</span>
+              </div>
+              <div className="flex flex-col">
+                <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
+                  {/* {minutesRemaining} */}
+                  {String(seconds).padStart(2, '0')}
+                </div>
+                <span className="text-sm text-gray-600 mt-1">Seconds</span>
               </div>
             </div>
           </div>
