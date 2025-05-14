@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
 import { useWishlist } from '../../contexts/WishlistContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { ShoppingCart, Menu, X, LogIn, UserCircle, LogOut, Heart, Bookmark, BookOpen, Sun, Moon } from 'lucide-react';
+import { ShoppingCart, Menu, X, LogIn, UserCircle, LogOut, Heart, Bookmark, BookOpen, Sun, Moon, User } from 'lucide-react';
 import { Transition } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import LoginModal from '../auth/LoginModal';
@@ -19,7 +19,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
   const { user, isAuthenticated, logout } = useAuth();
   const { getItemCount } = useCart();
   const { wishlist } = useWishlist();
-  const { theme, toggleTheme } = useTheme();
+  // const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
@@ -27,6 +27,9 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
   const [wishlistModalOpen, setWishlistModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+
+  // console.log("user", user);
+  // console.log("isAuthenticated", isAuthenticated);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,7 +130,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <motion.button
+              {/* <motion.button
                 onClick={toggleTheme}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -139,7 +142,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                 ) : (
                   <Moon className="h-6 w-6" />
                 )}
-              </motion.button> 
+              </motion.button>  */}
 
               <motion.button 
                 onClick={toggleWishlistModal}
@@ -169,7 +172,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                 )}
               </motion.button>
 
-              <motion.button
+              {/* <motion.button
                 onClick={toggleTheme}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -177,7 +180,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                 aria-label="Toggle theme"
               >
                   <Bookmark className='h-6 w-6' />
-              </motion.button>
+              </motion.button> */}
               
               {isAuthenticated ? (
                 <div className="relative">
@@ -331,7 +334,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                 <div className="flex items-center justify-around px-4">
                   <button
                     onClick={openLoginModal}
-                    className="flex items-center px-4 py-2 text-base font-medium text-blue-600 hover:text-blue-800"
+                    className="flex items-center px-4 py-2 text-base font-medium text-orange-400 hover:text-orange-600"
                   >
                     <LogIn className="h-5 w-5 mr-1" />
                     Login

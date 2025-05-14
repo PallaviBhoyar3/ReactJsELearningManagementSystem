@@ -13,6 +13,7 @@ type CartContextType = {
   clearCart: () => void;
   getTotalPrice: () => number;
   getItemCount: () => number;
+  isInCart: (courseId: string) => boolean;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -27,7 +28,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const existingItemIndex = prevItems.findIndex(
         (item) => item.course.id === course.id
       );
-console.log("existingItemIndex", existingItemIndex)
+// console.log("existingItemIndex", existingItemIndex)
       if (existingItemIndex >= 0) {
         
         const updatedItems = [...prevItems];
@@ -64,6 +65,13 @@ console.log("existingItemIndex", existingItemIndex)
     return items.reduce((count, item) => count + item.quantity, 0);
   };
 
+  const isInCart = (courseId: string) => {
+    return items.some((item) => item.course.id === courseId); 
+  }
+  // console.log("isInCart", isInCart)     
+
+  console.log("items", items)
+
   return (
     <CartContext.Provider
       value={{
@@ -73,6 +81,7 @@ console.log("existingItemIndex", existingItemIndex)
         clearCart,
         getTotalPrice,
         getItemCount,
+        isInCart
       }}
     >
       {children}

@@ -21,7 +21,9 @@ const Hero = () => {
             </h1>
             <p className="text-xl text-blue-100">
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla praesentium ab nostrum similique tempora deleniti!            </p>
-            <form onSubmit={handleSearch} className="flex w-full max-w-md">
+            
+            
+            {/* <form onSubmit={handleSearch} className="flex w-full max-w-md">
               <div className="relative flex-grow">
                 <input
                   type="text"
@@ -43,18 +45,18 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla praesentium ab n
               >
                 Search
               </button>
-            </form>
-            {/* <div className="flex flex-wrap gap-2 text-sm">
+            </form> */}
+            <div className="flex flex-wrap gap-2 text-sm">
               <p className="text-blue-100 mr-2">Popular:</p>
               {['Web Development', 'Frontend Development', 'UX Design', 'React Js'].map((tag) => (
                 <button
                   key={tag}
-                  className="bg-blue-700 hover:bg-blue-900 rounded-full px-3 py-1 transition-colors duration-200"
+                  className="bg-orange-300 hover:bg-orange-600 rounded-full px-3 py-1 transition-colors duration-200"
                 >
                   {tag}
                 </button>
               ))}
-            </div> */}
+            </div> 
           </div>
           <div className="relative hidden md:block">
             <div className="relative z-10 bg-white rounded-lg shadow-xl overflow-hidden">

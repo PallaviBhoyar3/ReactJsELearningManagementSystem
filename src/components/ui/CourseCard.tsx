@@ -5,7 +5,7 @@ import { Course } from '../../types';
 import { useCart } from '../../contexts/CartContext';
 import { useWishlist } from '../../contexts/WishlistContext';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // import { addToCart } from '../../redux/slices/cartSlice';
 
 type CourseCardProps = {
@@ -14,10 +14,11 @@ type CourseCardProps = {
 
 const CourseCard = ({ course }: CourseCardProps) => {
   const [saved, setSaved] = useState(false);
-  const { addToCart } = useCart();
+  const { addToCart, isInCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const isCourseInWishlist = isInWishlist(course.id);
+  const isCourseInCart = isInCart(course.id); 
 
   const handleSave = () => {
     setSaved(!saved);
@@ -37,10 +38,12 @@ const CourseCard = ({ course }: CourseCardProps) => {
 
   const handleAddToCart = () => {
     // console.log("course", course)
+    if (!isCourseInCart){
     addToCart(course);    // using contexthook
 
     //  dispatch(addToCart(course))    // using Reduxtoolkit
     toast.success('Added to cart');
+    }
   };
 
 
@@ -153,10 +156,11 @@ const CourseCard = ({ course }: CourseCardProps) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleAddToCart}
+            disabled={isCourseInCart}
             className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-orange-400 hover:bg-orange-700 focus:outline-none transition-colors"
           >
             <ShoppingCart className="h-4 w-4 mr-1" />
-            Add to Cart
+            {isCourseInCart ? 'In Cart' : 'Add to Cart'}
           </motion.button>
         </div>
       </div>
