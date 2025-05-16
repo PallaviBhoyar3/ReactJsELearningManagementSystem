@@ -2,8 +2,7 @@ import { useState, useEffect, Fragment } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
 import { useWishlist } from '../../contexts/WishlistContext';
-import { useTheme } from '../../contexts/ThemeContext';
-import { ShoppingCart, Menu, X, LogIn, UserCircle, LogOut, Heart, Bookmark, BookOpen, Sun, Moon, User } from 'lucide-react';
+import { ShoppingCart, Menu, X, LogIn, UserCircle, LogOut, Heart, Bookmark, BookOpen } from 'lucide-react';
 import { Transition } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import LoginModal from '../auth/LoginModal';
@@ -19,7 +18,6 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
   const { user, isAuthenticated, logout } = useAuth();
   const { getItemCount } = useCart();
   const { wishlist } = useWishlist();
-  // const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
@@ -28,9 +26,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
-  // console.log("user", user);
-  // console.log("isAuthenticated", isAuthenticated);
-
+  // Track scroll position to change navbar style
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -96,9 +92,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-white dark:bg-gray-800 shadow-md' 
-            : 'bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm'
+          isScrolled ? 'bg-white shadow-md' : 'bg-white/90 backdrop-blur-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -111,7 +105,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  E-Learning
+                  ELearning
                 </motion.h1>
               </div>
               <div className="hidden md:ml-6 md:flex md:space-x-8">
@@ -130,20 +124,6 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              {/* <motion.button
-                onClick={toggleTheme}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="h-6 w-6" />
-                ) : (
-                  <Moon className="h-6 w-6" />
-                )}
-              </motion.button>  */}
-
               <motion.button 
                 onClick={toggleWishlistModal}
                 whileHover={{ scale: 1.1 }}
@@ -171,16 +151,6 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                   </span>
                 )}
               </motion.button>
-
-              {/* <motion.button
-                onClick={toggleTheme}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                aria-label="Toggle theme"
-              >
-                  <Bookmark className='h-6 w-6' />
-              </motion.button> */}
               
               {isAuthenticated ? (
                 <div className="relative">
@@ -225,7 +195,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                     onClick={openLoginModal}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center px-3 py-1.5 border border-orange-400 text-sm font-medium rounded-md text-orange-400 hover:bg-orange-50 transition-colors"
+                    className="inline-flex items-center px-3 py-1.5 border border-orange-600 text-sm font-medium rounded-md text-orange-600 hover:bg-orange-50 transition-colors"
                   >
                     <LogIn className="h-4 w-4 mr-1" />
                     Login
@@ -234,7 +204,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                     onClick={openSignupModal}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-orange-400 hover:bg-orange-700 transition-colors"
+                    className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-orange-400 hover:bg-orange-600 transition-colors"
                   >
                     Sign Up
                   </motion.button>
@@ -279,6 +249,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
           </div>
         </div>
 
+        {/* Mobile menu */}
         <Transition
           show={mobileMenuOpen}
           enter="transition-opacity duration-200 ease-out"
@@ -323,7 +294,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                     </button>
                     <button
                       onClick={handleLogout}
-                      className="flex w-full px-4 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                      className="flex w-full px-4 py-2 text-base font-medium text-gray-700 hover:text-orange-400 hover:bg-orange-50"
                     >
                       <LogOut className="h-5 w-5 mr-2" />
                       Logout
@@ -334,7 +305,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
                 <div className="flex items-center justify-around px-4">
                   <button
                     onClick={openLoginModal}
-                    className="flex items-center px-4 py-2 text-base font-medium text-orange-400 hover:text-orange-600"
+                    className="flex items-center px-4 py-2 text-base font-medium text-blue-600 hover:text-blue-800"
                   >
                     <LogIn className="h-5 w-5 mr-1" />
                     Login
@@ -352,6 +323,7 @@ const Navbar = ({ onDashboardClick }: NavbarProps) => {
         </Transition>
       </motion.nav>
 
+      {/* Modals */}
       <LoginModal 
         isOpen={loginModalOpen} 
         onClose={() => setLoginModalOpen(false)}

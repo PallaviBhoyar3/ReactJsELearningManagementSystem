@@ -95,7 +95,7 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                   <button
                     onClick={handleCheckout}
                     disabled={!isAuthenticated}
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-orange-400 hover:bg-orange-600 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isAuthenticated ? 'Checkout' : 'Login to Checkout'}
                   </button>

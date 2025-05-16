@@ -13,7 +13,6 @@ const SpecialOffers = () => {
   const hoursRemaining = 21;
   const minutesRemaining = 45;
 
-
   // ================================================================
 
   const initialTime = 3 * 3600 + 2 * 60 + 10; // 1 hour, 2 minutes, 10 seconds
@@ -35,9 +34,8 @@ const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padSt
 
 // console.log("formattedTime", formattedTime);
 
-
   return (
-    <section id="special-offers" className="py-16 bg-gradient-to-r from-orange-50 to-blue-50">
+    <section id="special-offers" className="py-16 bg-gradient-to-r from-orange-100 to-blue-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <div className="inline-block bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
@@ -47,7 +45,7 @@ const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padSt
             Special Discounts Just For You
           </h2>
           <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-            Grab these high-rated courses at unbelievable prices before they're gone.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, voluptatibus.
           </p>
         </div>
         
@@ -60,32 +58,26 @@ const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padSt
               </span>
             </div>
             <div className="flex justify-center space-x-4 text-center">
-              {/* <div className="flex flex-col">
+              <div className="flex flex-col">
                 <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
-                  {daysRemaining}
+                  {/* {daysRemaining} */}
+                  {String(hours).padStart(2, '0')}
                 </div>
                 <span className="text-sm text-gray-600 mt-1">Days</span>
-              </div> */}
+              </div>
               <div className="flex flex-col">
                 <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
                   {/* {hoursRemaining} */}
-                  {String(hours).padStart(2, '0')}
+                   {String(minutes).padStart(2, '0')}
                 </div>
                 <span className="text-sm text-gray-600 mt-1">Hours</span>
               </div>
               <div className="flex flex-col">
                 <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
                   {/* {minutesRemaining} */}
-                  {String(minutes).padStart(2, '0')}
+                   {String(seconds).padStart(2, '0')}
                 </div>
                 <span className="text-sm text-gray-600 mt-1">Minutes</span>
-              </div>
-              <div className="flex flex-col">
-                <div className="text-3xl font-bold bg-gray-900 text-white rounded-lg w-16 h-16 flex items-center justify-center">
-                  {/* {minutesRemaining} */}
-                  {String(seconds).padStart(2, '0')}
-                </div>
-                <span className="text-sm text-gray-600 mt-1">Seconds</span>
               </div>
             </div>
           </div>
@@ -97,6 +89,11 @@ const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padSt
           ))}
         </div>
         
+        <div className="mt-12 text-center">
+          <button className="mt-4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-600 focus:outline-none">
+            View All Deals
+          </button>
+        </div>
       </div>
     </section>
   );

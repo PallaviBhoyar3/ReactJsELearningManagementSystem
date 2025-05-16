@@ -90,7 +90,7 @@ const SignupModal = ({ isOpen, onClose, onLoginClick }: SignupModalProps) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter Your Name"
+                placeholder="Enter Name"
               />
             </div>
             
@@ -106,7 +106,7 @@ const SignupModal = ({ isOpen, onClose, onLoginClick }: SignupModalProps) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="abc@example.com"
+                placeholder="you@example.com"
               />
             </div>
             
@@ -164,7 +164,7 @@ const SignupModal = ({ isOpen, onClose, onLoginClick }: SignupModalProps) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-400 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? 'Creating account...' : 'Sign up'}
               </button>
@@ -176,7 +176,7 @@ const SignupModal = ({ isOpen, onClose, onLoginClick }: SignupModalProps) => {
               Already have an account?{' '}
               <button
                 onClick={onLoginClick}
-                className="font-medium text-blue-600 hover:text-blue-500"
+                className="font-medium text-orange-400 hover:text-orange-500"
               >
                 Log in
               </button>

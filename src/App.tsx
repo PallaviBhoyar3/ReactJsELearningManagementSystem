@@ -12,8 +12,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
 import { WishlistProvider } from './contexts/WishlistContext';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { CourseProvider } from './contexts/CourseContext';
 import CourseList from './redux/CourseList';
 import CartList from './redux/CartList';
 
@@ -31,61 +30,59 @@ function App() {
   }, []);
 
   return (
-    <Provider store={store}>
     <ThemeProvider>
       <AuthProvider>
-        <CartProvider>
-          <WishlistProvider>
-            <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
-              <Navbar onDashboardClick={() => setShowDashboard(true)} />
-              <main className="flex-grow">
-                {showDashboard ? (
-                  <Dashboard />
-                ) : (
-                  <>
-                    <Hero />
-                    <Courses />
-
-                  {/* ==== test files for redux ========= */}
-                        {/* <CourseList/>
-                        <CartList/> */}
-                    {/* ===================== */}
-
-                    <Trainers />
-                    <SpecialOffers />
-                    <Reviews />
-                  </>
-                )}
-              </main>
-              <Footer />
-              <Toaster 
-                position="top-center"
-                toastOptions={{
-                  duration: 3000,
-                  style: {
-                    background: '#363636',
-                    color: '#fff',
-                  },
-                  success: {
-                    iconTheme: {
-                      primary: '#2563EB',
-                      secondary: '#fff',
+        <CourseProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
+                <Navbar onDashboardClick={() => setShowDashboard(true)} />
+                <main className="flex-grow">
+                  {showDashboard ? (
+                    <Dashboard />
+                  ) : (
+                    <>
+                      <Hero />
+                      <Courses />
+                      {/* ==================================== */}
+                      {/* <CourseList /> */}
+                      {/* <CartList /> */}
+                      {/* ==================================== */}
+                      <Trainers />
+                      <SpecialOffers />
+                      <Reviews />
+                    </>
+                  )}
+                </main>
+                <Footer />
+                <Toaster 
+                  position="top-center"
+                  toastOptions={{
+                    duration: 3000,
+                    style: {
+                      background: '#363636',
+                      color: '#fff',
                     },
-                  },
-                  error: {
-                    iconTheme: {
-                      primary: '#EF4444',
-                      secondary: '#fff',
+                    success: {
+                      iconTheme: {
+                        primary: '#2563EB',
+                        secondary: '#fff',
+                      },
                     },
-                  },
-                }}
-              />
-            </div>
-          </WishlistProvider>
-        </CartProvider>
+                    error: {
+                      iconTheme: {
+                        primary: '#EF4444',
+                        secondary: '#fff',
+                      },
+                    },
+                  }}
+                />
+              </div>
+            </WishlistProvider>
+          </CartProvider>
+        </CourseProvider>
       </AuthProvider>
     </ThemeProvider>
-    </Provider>
   );
 }
 

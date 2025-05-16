@@ -27,7 +27,7 @@ const Reviews = () => {
             What Our Students Say
           </h2>
           <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-            Hear from students who have achieved their goals with our courses.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aut.
           </p>
         </div>
         

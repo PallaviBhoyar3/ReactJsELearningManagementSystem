@@ -1,18 +1,18 @@
 import { Review } from '../types';
-import review1 from "../assets/review1.jpeg";
-import review2 from "../assets/review2.jpeg";
-import review3 from "../assets/review3.jpeg";
-import review4 from "../assets/review4.jpeg";
+import Review1 from "../assets/review1.jpeg"
+import Review2 from "../assets/review2.jpeg"
+import Review3 from "../assets/review3.jpeg"
+import Review4 from "../assets/review4.jpeg"
 
 export const reviews: Review[] = [
   {
     id: '1',
     user: {
       name: 'James Wilson',
-      image: review1,
+      image: Review1,
       role: 'Web Developer'
     },
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s,',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec est venenatis, posuere sem eu, pellentesque tortor. Cras molestie euismod ullamcorper.',
     rating: 5,
     course: 'Complete Web Development',
     date: '2025-03-15'
@@ -20,35 +20,35 @@ export const reviews: Review[] = [
   {
     id: '2',
     user: {
-      name: 'Sophia Martinez',
-      image: review2,
+      name: 'James Wilson',
+      image: Review2,
       role: 'Frontend Developer'
     },
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s,',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec est venenatis, posuere sem eu, pellentesque tortor. Cras molestie euismod ullamcorper.',
     rating: 4.5,
-    course: 'Frontend Fundamentals',
+    course: 'Frontend Developer',
     date: '2025-02-28'
   },
   {
     id: '3',
     user: {
-      name: 'Robert Thompson',
-      image: review3,
+      name: 'James Wilson',
+      image: Review3,
       role: 'React Js Developer'
     },
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s,',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec est venenatis, posuere sem eu, pellentesque tortor. Cras molestie euismod ullamcorper.',
     rating: 5,
-    course: 'React Js Developement',
+    course: 'React Js Developer',
     date: '2025-04-02'
   },
   {
     id: '4',
     user: {
-      name: 'Lisa Kim',
-      image: review4,
+      name: 'James Wilson',
+      image: Review4,
       role: 'UI Designer'
     },
-    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s,',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec est venenatis, posuere sem eu, pellentesque tortor. Cras molestie euismod ullamcorper.',
     rating: 4.8,
     course: 'UI/UX Design Professional',
     date: '2025-03-20'

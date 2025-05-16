@@ -5,8 +5,6 @@ import { Course } from '../../types';
 import { useCart } from '../../contexts/CartContext';
 import { useWishlist } from '../../contexts/WishlistContext';
 import toast from 'react-hot-toast';
-// import { useDispatch } from 'react-redux';
-// import { addToCart } from '../../redux/slices/cartSlice';
 
 type CourseCardProps = {
   course: Course;
@@ -17,8 +15,8 @@ const CourseCard = ({ course }: CourseCardProps) => {
   const { addToCart, isInCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
+  const isCourseInCart = isInCart(course.id);
   const isCourseInWishlist = isInWishlist(course.id);
-  const isCourseInCart = isInCart(course.id); 
 
   const handleSave = () => {
     setSaved(!saved);
@@ -33,22 +31,12 @@ const CourseCard = ({ course }: CourseCardProps) => {
     }
   };
 
-  // using redux ===============================================>
-  // const dispatch = useDispatch()
-
   const handleAddToCart = () => {
-    // console.log("course", course)
-    if (!isCourseInCart){
-    addToCart(course);    // using contexthook
-
-    //  dispatch(addToCart(course))    // using Reduxtoolkit
-    toast.success('Added to cart');
+    if (!isCourseInCart) {
+      addToCart(course);
+      toast.success('Added to cart');
     }
   };
-
-
-
-  
 
   return (
     <motion.div 
@@ -77,7 +65,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
               isCourseInWishlist ? 'text-red-500 fill-red-500' : 'text-gray-600'
             }`} />
           </motion.button>
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={handleSave}
@@ -90,7 +78,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
             ) : (
               <Bookmark className="h-5 w-5 text-gray-600" />
             )}
-          </motion.button>
+          </motion.button> */}
         </div>
         {course.isSpecialOffer && (
           <motion.div 
@@ -157,7 +145,11 @@ const CourseCard = ({ course }: CourseCardProps) => {
             whileTap={{ scale: 0.95 }}
             onClick={handleAddToCart}
             disabled={isCourseInCart}
-            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-orange-400 hover:bg-orange-700 focus:outline-none transition-colors"
+            className={`inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white transition-colors ${
+              isCourseInCart 
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-orange-400 hover:bg-orange-700'
+            }`}
           >
             <ShoppingCart className="h-4 w-4 mr-1" />
             {isCourseInCart ? 'In Cart' : 'Add to Cart'}

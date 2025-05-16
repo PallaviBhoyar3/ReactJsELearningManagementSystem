@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Search } from 'lucide-react';
-import bannerImg from "../../assets/banner.jpg"
+import BannerImg from "../../assets/banner.jpg"
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,35 +20,11 @@ const Hero = () => {
               Transform Your Skills with Expert-Led Courses
             </h1>
             <p className="text-xl text-blue-100">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla praesentium ab nostrum similique tempora deleniti!            </p>
-            
-            
-            {/* <form onSubmit={handleSearch} className="flex w-full max-w-md">
-              <div className="relative flex-grow">
-                <input
-                  type="text"
-                  placeholder="Search for courses..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full py-3 px-4 pr-10 rounded-l-md text-gray-900 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 hover:text-blue-600"
-                >
-                  <Search className="h-5 w-5" />
-                </button>
-              </div>
-              <button
-                type="submit"
-                className="bg-orange-500 hover:bg-orange-600 py-3 px-6 rounded-r-md text-white font-medium transition-colors duration-200"
-              >
-                Search
-              </button>
-            </form> */}
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur nobis hic quis natus dolorum quibusdam sit exercitationem consectetur eum.            </p>
+           
             <div className="flex flex-wrap gap-2 text-sm">
               <p className="text-blue-100 mr-2">Popular:</p>
-              {['Web Development', 'Frontend Development', 'UX Design', 'React Js'].map((tag) => (
+              {['Web Development', 'FrontEnd Development', 'React Native', 'React Js'].map((tag) => (
                 <button
                   key={tag}
                   className="bg-orange-300 hover:bg-orange-600 rounded-full px-3 py-1 transition-colors duration-200"
@@ -56,12 +32,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla praesentium ab n
                   {tag}
                 </button>
               ))}
-            </div> 
+            </div>
           </div>
           <div className="relative hidden md:block">
             <div className="relative z-10 bg-white rounded-lg shadow-xl overflow-hidden">
               <img
-                src={bannerImg}
+                src={BannerImg}
                 alt="Student learning online"
                 className="w-full h-auto object-cover"
               />

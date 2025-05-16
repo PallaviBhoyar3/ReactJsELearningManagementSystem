@@ -10,7 +10,7 @@ const Trainers = () => {
             Learn from Experts
           </h2>
           <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, fugiat.          </p>
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, adipisci.          </p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -69,7 +69,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, fugiat.      
                 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {trainer.expertise.slice(0, 3).map((skill, index) => (
-                    <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                       {skill}
                     </span>
                   ))}

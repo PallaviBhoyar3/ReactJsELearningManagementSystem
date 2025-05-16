@@ -13,18 +13,19 @@ type WishlistContextType = {
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
 export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  
+  // Initialize state from localStorage if available
   const [wishlist, setWishlist] = useState<Course[]>(() => {
-    const savedWishlist = localStorage.getItem('wishlist');
+    const savedWishlist = localStorage.getItem('elearn-wishlist');
     return savedWishlist ? JSON.parse(savedWishlist) : [];
   });
 
+  // Persist wishlist to localStorage when it changes
   useEffect(() => {
-    localStorage.setItem('wishlist', JSON.stringify(wishlist)); 
+    localStorage.setItem('elearn-wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
   const addToWishlist = (course: Course) => {
-   
+    // Check if course is already in wishlist
     if (wishlist.some(item => item.id === course.id)) {
       toast.error('Already in your wishlist');
       return;
@@ -70,8 +71,3 @@ export const useWishlist = (): WishlistContextType => {
   }
   return context;
 };
-
-
-
-
-//edulearn-wishlist

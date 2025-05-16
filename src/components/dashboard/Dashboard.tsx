@@ -2,19 +2,20 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, CheckCircle, Clock, Star, Award, FileText, Video, Settings } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import DashboardCourseCard from './DashboardCourseCard';
+// import DashboardCourseCard from './DashboardCourseCard';
 import { enrolledCourses } from '../../data/enrolledCourses';
-import { useDispatch, useSelector } from 'react-redux';
+import ShowVideoModal from '../courses/ShowVideoModal';
+import DashboardCourseCard from './DashboardCourseCard';
 
 const Dashboard = () => {
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('enrolled');
+  const [showModal, setShowModal] = useState(false);
   
   const tabs = [
     { id: 'enrolled', label: 'My Courses', icon: BookOpen },
     { id: 'progress', label: 'In Progress', icon: Clock },
     { id: 'completed', label: 'Completed', icon: CheckCircle },
-    { id: 'certificates', label: 'Certificates', icon: Award },
   ];
   
   const completedCourses = enrolledCourses.filter(course => course.progress === 100);
@@ -25,12 +26,6 @@ const Dashboard = () => {
                         activeTab === 'completed' ? completedCourses : [];
 
   const totalProgress = enrolledCourses.reduce((sum, course) => sum + course.progress, 0) / enrolledCourses.length;
-
-// get cart items using Redux ================>
-// const cartItems = useSelector((state) => console.log("======@ dashboard", state));
-// console.log("cartItems", cartItems)
-  // const dispatch = useDispatch();
-  // console.log("dispatch", dispatch)
 
   return (
     <div className="bg-gray-50 min-h-screen py-10">
@@ -44,7 +39,7 @@ const Dashboard = () => {
           >
             Welcome back, {user?.name}!
           </motion.h1>
-          <p className="text-gray-600">Track your progress & continue learning</p>
+          <p className="text-gray-600">Track your progress and continue learning</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -91,10 +86,9 @@ const Dashboard = () => {
               {((completedCourses.length / enrolledCourses.length) * 100).toFixed(0)}% of your courses completed
             </p>
           </motion.div>
-          
         </div>
         
-        {/* <div className="bg-white rounded-lg shadow-md overflow-hidden mb-10">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden mb-10">
           <div className="border-b border-gray-200">
             <div className="flex overflow-x-auto">
               {tabs.map((tab, index) => {
@@ -174,95 +168,14 @@ const Dashboard = () => {
               </div>
             )}
           </div>
-        </div> */}
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white rounded-lg shadow-md p-6"
-            >
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Continue Learning</h3>
-              {inProgressCourses.length > 0 ? (
-                <div className="space-y-4">
-                  {inProgressCourses.slice(0, 3).map((course) => (
-                    <div key={course.id} className="flex items-start p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                      <img 
-                        src={course.image} 
-                        alt={course.title}
-                        className="w-20 h-20 object-cover rounded"
-                      />
-                      <div className="ml-4 flex-1">
-                        <h4 className="font-medium text-gray-900">{course.title}</h4>
-                        <div className="mt-1 flex items-center text-sm text-gray-500">
-                          <Clock className="h-4 w-4 mr-1" />
-                          <span>Last activity: 2 days ago</span>
-                        </div>
-                        <div className="mt-2">
-                          <div className="flex justify-between text-xs text-gray-500 mb-1">
-                            <span>Progress</span>
-                            <span>{course.progress}%</span>
-                          </div>
-                          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-blue-600 rounded-full" 
-                              style={{ width: `${course.progress}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                      <button className="ml-4 p-2 text-blue-600 hover:text-blue-800 transition-colors">
-                        <Video className="h-5 w-5" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-gray-500">You don't have any courses in progress</p>
-              )}
-              
-              {inProgressCourses.length > 3 && (
-                <div className="mt-4 text-center">
-                  <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                    View all in-progress courses
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          </div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-            className="bg-white rounded-lg shadow-md p-6"
-          >
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Account Settings</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="flex items-center p-2 hover:bg-gray-50 rounded-md text-gray-700 hover:text-blue-600 transition-colors">
-                  <Settings className="h-5 w-5 mr-3 text-gray-400" />
-                  <span>Profile Settings</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center p-2 hover:bg-gray-50 rounded-md text-gray-700 hover:text-blue-600 transition-colors">
-                  <FileText className="h-5 w-5 mr-3 text-gray-400" />
-                  <span>Purchase History</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center p-2 hover:bg-gray-50 rounded-md text-gray-700 hover:text-blue-600 transition-colors">
-                  <Award className="h-5 w-5 mr-3 text-gray-400" />
-                  <span>Certificates</span>
-                </a>
-              </li>
-            </ul>
-          </motion.div>
         </div>
+      
       </div>
+
+      <ShowVideoModal 
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+      />
     </div>
   );
 };

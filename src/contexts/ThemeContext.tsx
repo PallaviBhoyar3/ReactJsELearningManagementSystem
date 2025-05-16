@@ -17,7 +17,6 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
-// console.log("theme", theme)
 
   useEffect(() => {
     // Update document class and localStorage when theme changes
